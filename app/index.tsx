@@ -8,7 +8,7 @@ const App = () => {
     <View className="justify-center items-center flex-1">
       <Text className="font-pblack text-3xl">Aora!</Text>
       <StatusBar style="auto" />
-      <Link href="/profile" className="text-blue-500 text-xl font-semibold">Profile</Link>
+      <Link href="/home" className="text-blue-500 text-xl font-semibold">Go to Home</Link>
     </View>
   );
 };
