@@ -3,7 +3,7 @@ import React from "react";
 import { Tabs } from "expo-router";
 import icons from "../../constants/icons";
 
-type TabIconType = {
+type TabIconProps = {
   icon: ImageSourcePropType;
   color: string;
   name: string;
@@ -11,7 +11,7 @@ type TabIconType = {
   altName?: string;
 };
 
-const TabIcon = ({ icon, color, name, focused }: TabIconType) => {
+const TabIcon = ({ icon, color, name, focused }: TabIconProps) => {
   return (
     <View className="items-center gap-1">
       <Image
@@ -21,7 +21,8 @@ const TabIcon = ({ icon, color, name, focused }: TabIconType) => {
         className="w-6 h-6"
       />
       <Text
-        className={`${focused ? "font-psemibold" : "font-pregular"} text-xs`} style={{ color }}
+        className={`${focused ? "font-psemibold" : "font-pregular"} text-xs`}
+        style={{ color }}
       >
         {name}
       </Text>
@@ -29,7 +30,7 @@ const TabIcon = ({ icon, color, name, focused }: TabIconType) => {
   );
 };
 
-const tabsData: Omit<TabIconType, "color" | "focused">[] = [
+const tabsData: Omit<TabIconProps, "color" | "focused">[] = [
   {
     name: "Home",
     icon: icons.home,
@@ -61,8 +62,8 @@ const TabsLayout = () => {
             backgroundColor: "#161622",
             borderTopWidth: 1,
             borderTopColor: "#232533",
-            height: 65
-          }
+            height: 65,
+          },
         }}
       >
         {tabsData.map((item) => (
@@ -79,6 +80,7 @@ const TabsLayout = () => {
                 />
               ),
             }}
+            key={item.name}
           />
         ))}
       </Tabs>
