@@ -1,0 +1,36 @@
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  GestureResponderEvent,
+} from "react-native";
+import React from "react";
+
+type CustomButtonProps = {
+  title: string;
+  handlePress: (event: GestureResponderEvent) => void;
+  containerStyles?: string;
+  textStyles?: string;
+  isLoading?: boolean;
+};
+
+const CustomButton = ({
+  title,
+  handlePress,
+  containerStyles,
+  textStyles,
+  isLoading = false,
+}: CustomButtonProps) => {
+  return (
+    <TouchableOpacity
+      onPress={handlePress}
+      activeOpacity={0.7}
+      className={`bg-secondary items-center rounded-lg ${containerStyles} ${isLoading && "opacity-50"}`}
+      disabled={isLoading}
+    >
+      <Text className={`text-primary font-pbold text-lg ${textStyles}`}>{title}</Text>
+    </TouchableOpacity>
+  );
+};
+
+export default CustomButton;
